@@ -7,7 +7,7 @@ async function generatePlan() {
   Include: warm-up, 2 main drills, cool-down. Keep it fun, safe, and progressive.`;
 
   // Calls your PRIVATE proxy
-  const response = await fetch('https://soccer-proxy.onrender.com/generate', {
+  const response = await fetch('https://soccer-planner-proxy.onrender.com/generate', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ prompt })
