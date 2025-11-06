@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Soccer Practice AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Soccer Practice Planner</h1>
+    
+    <label>Focus:</label>
+    <select id="focus">
+      <option>Passing</option>
+      <option>Shooting</option>
+      <option>Defense</option>
+      <option>Possession</option>
+    </select>
+
+    <label>Players:</label>
+    <input type="number" id="players" value="16" min="8" max="22">
+
+    <label>Minutes:</label>
+    <input type="number" id="minutes" value="60" min="30" max="90" step="5">
+
+    <button onclick="generatePlan()">Generate Plan</button>
+
+    <div id="plan"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
