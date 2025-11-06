@@ -4,22 +4,18 @@ async function generatePlan() {
   const minutes = document.getElementById('minutes').value;
 
   const prompt = `Create a ${minutes}-minute soccer practice for ${players} high school girls focusing on ${focus}. 
-  Include: warm-up, 2 main drills, cool-down. Keep it fun, safe, and progressive. Use simple equipment.`;
+  Include: warm-up, 2 main drills, cool-down. Keep it fun, safe, and progressive.`;
 
-  // FREE AI CALL
-  const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyBWqJ3B3Cddb66FdI2WDAGHhECJHP1VGVM`, {
+  // Calls your PRIVATE proxy
+  const response = await fetch('https://soccer-proxy.onrender.com/generate', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      contents: [{ parts: [{ text: prompt }] }]
-    })
+    body: JSON.stringify({ prompt })
   });
 
   const data = await response.json();
-  const plan = data.candidates[0].content.parts[0].text;
-
-  document.getElementById('plan').innerHTML = plan.replace(/\n/g, '<br>');
-  savePlan(plan);
+  document.getElementById('plan').innerHTML = data.plan.replace(/\n/g, '<br>');
+  savePlan(data.plan);
 }
 
 // Save to phone (works offline after)
